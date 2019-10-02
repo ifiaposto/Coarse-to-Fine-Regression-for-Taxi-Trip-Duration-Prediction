@@ -1,4 +1,4 @@
-#Predict the total ride duration of taxi trips in New York City
+# Predict the total ride duration of taxi trips in New York City
 
 This tutorial develops a prediction model for the New York City Taxi Trip Duration on [Kaggle](https://www.kaggle.com/c/10-718-2019s). You may refer to the `trip_time_prediction.pdf` for a detailed description of the model and features used for this task.
 
@@ -8,7 +8,7 @@ This tutorial develops a prediction model for the New York City Taxi Trip Durati
 [TOCM]
 
 [TOC]
-#Setting-up the tutorial
+# Setting-up the tutorial
 1. Clone the repo
 
 ```
@@ -55,9 +55,9 @@ it constructs the location graphs, it partitions the graph given their popularit
 taxi_zones_clusters.csv
 distances.csv
 
-#Results
+# Results
 
-#Contact
+# Contact
 
 
 
