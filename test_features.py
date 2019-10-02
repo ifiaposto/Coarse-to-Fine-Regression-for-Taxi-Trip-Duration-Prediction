@@ -5,13 +5,10 @@ import pandas as pd
 from datetime import datetime
 
 
-#load csv
-#path2='cropped_taxi_data/'
-#path='taxi_data/'
+
 
 
 #load the testing dataset
-#X_test = pd.read_csv(path2+"valid_unlab.csv")
 X_test = pd.read_csv("data/valid_unlab.csv")
 print(X_test.info())
 
@@ -31,12 +28,9 @@ X_test['pickup_p7_hour'] = ((X_test.tpep_pickup_datetime.dt.hour+7)%24)
 X_test['pickup_p8_hour'] = ((X_test.tpep_pickup_datetime.dt.hour+8)%24)
 print('hours, weekdays, day of year extracted')
 print(X_test.info(verbose=True))
-#X_test.to_csv(path2+'X_test_0.csv', index=False)
 X_test.to_csv('X_test_0.csv', index=False)
-#print(X_test.head(10))
 
 #load the traffic per location and hour of the day
-#df_traffic_per_hour=  pd.read_csv(path+"traffic_location_hour.csv")
 df_traffic_per_hour=  pd.read_csv("traffic_location_hour.csv")
 
 print('traffic per location and hour loaded!')
@@ -129,30 +123,6 @@ X_test.rename(index=str, columns={"traffic_level": "traffic_dropoff_weekday"}, i
 print(X_test.info())
 print('weekday traffic merged!')
 
-##load the traffic per location and  day of year
-#df_traffic_per_dayofyear=  pd.read_csv(path+"traffic_location_dayofyear.csv")
-#df_traffic_per_dayofyear =df_traffic_per_dayofyear[['LocationID','dayofyear','traffic_level']]
-#print(df_traffic_per_dayofyear.head(10))
-##add any missing values to make sure that all test entries will be merged!
-#df_traffic_per_dayofyear.rename(index=str, columns={"LocationID":"PULocationID"}, inplace=True)
-#common=pd.merge(X_test, df_traffic_per_dayofyear, on=['PULocationID', 'dayofyear'])
-#diff=X_test[(~X_test.PULocationID.isin(common.PULocationID))&(~X_test.dayofyear.isin(common.dayofyear))]
-#X_test=pd.merge(X_test, df_traffic_per_dayofyear, on=['PULocationID', 'dayofyear'])
-#print(X_test.info(verbose=True))
-#print(X_test[['Id','PULocationID', 'dayofyear']])
-#print('what it could not be merged!')
-##print(len(diff.index))
-#print(diff.info(verbose=True))
-#
-#common.rename(index=str, columns={"traffic_level": "traffic_dayofyear"}, inplace=True)
-#print(common.info(verbose=True))
-#diff['traffic_dayofyear']=0
-#X_test=pd.concat([common, diff])
-#X_test.to_csv(path2+'X_test_1.csv', index=False)
-#print(X_test.info())
-#
-#print('dayofyear traffic merged!')
-
 
 #delete uneccessary features
 del X_test['VendorID']
@@ -180,7 +150,6 @@ print(X_test.info(verbose=True))
 
 
 ##compute distance between pickup-drop-off location
-#distances = pd.read_csv(path2+"distances.csv")
 distances = pd.read_csv("distances.csv")
 
 X_test=pd.merge(X_test, distances, on=['PULocationID', 'DOLocationID'])
@@ -190,7 +159,6 @@ print(X_test.info(verbose=True))
 
 
 #compute one hot representation for the popular zones
-#zones = pd.read_csv(path2+"one_hot_popular_taxi_zones_lookup.csv")
 zones = pd.read_csv("one_hot_popular_taxi_zones_lookup.csv")
 
 zones.rename(index=str, columns={"LocationID_":"PULocationID"}, inplace=True)
@@ -205,7 +173,6 @@ print('one hot representations of taxi zones  added!')
 print(X_test.info(verbose=True))
 
 
-#location_features = pd.read_csv(path2+"popular_taxi_zones_binary_clusters.csv")
 location_features = pd.read_csv("popular_taxi_zones_binary_clusters.csv")
 location_features.rename(index=str, columns={"LocationID":"PULocationID"}, inplace=True)
 location_features.columns=location_features.columns.str.replace('level', 'pickup_level')
@@ -220,7 +187,6 @@ print(X_test.info(verbose=True))
 
 
 X_test=X_test.sort_values(by=['Id'])
-#X_test.to_csv(path2+'X_test.csv', index=False)
 X_test.to_csv('X_test.csv', index=False)
 
 print('all features added!')
