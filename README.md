@@ -78,7 +78,7 @@ X_test.csv
 ### 6. Training and Validation Dataset formation, Model Training.
 
 ```
-python3 split_learn_features.py
+python3 learn.py
 ```
 
 This file splits the dataset in the validation/ training dataset. It computes the traffic and location features for them. Subsequently, a random  forest regressor is fitted. Finally, it predicts the trip duration for the testing dataset. It prints a log file with the importance of the features, the validation error achieved and the learning time.
