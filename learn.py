@@ -15,7 +15,7 @@ X_train = pd.read_csv("data/train.csv")
 print(X_train.info(verbose=True))
 #get the last entries of the data for validation
 X_val=X_train.tail(5000000)
-#get a fraction of the first entries of the data for training
+#sample a fraction of the data for training
 X_train=X_train.head(55000000)
 X_train=X_train.sample(frac=0.2)
 
