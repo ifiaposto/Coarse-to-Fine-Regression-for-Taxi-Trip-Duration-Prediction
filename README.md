@@ -3,11 +3,7 @@
 This tutorial develops a prediction model for the New York City Taxi Trip Duration on [Kaggle](https://www.kaggle.com/c/10-718-2019s). You may refer to the `trip_time_prediction.pdf` for a detailed description of the model and features used for this task.
 
 
-**Table of Contents**
 
-[TOCM]
-
-[TOC]
 # Setting-up the tutorial
 1. Clone the repo
 
@@ -23,7 +19,7 @@ pip install -r requirements.txt
 
 You can download the data from [Kaggle](https://www.kaggle.com/c/10-718-2019s). After downloading, unzip and save the CSV files to a directory called `data` in the root of this repository.
 
-#Running the tutorial
+# Running the tutorial
 For a detailed description of the files mentioned below, you may refer to the   report `trip_time_prediction.pdf` provided in the repository.
 
 1. Traffic Level Computation
@@ -34,6 +30,7 @@ python3 traffic_binarization.py
 This step computes the discretized traffic level per location and hour of the day and per location and day of the week. It generates the files:
 
 traffic_location_hour.csv
+
 traffic_location_weekday.csv
 
 2. Zone Popularity Computation
