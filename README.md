@@ -36,7 +36,7 @@ traffic_location_weekday.csv
 2. Zone Popularity Computation
 
 ```
-python3 zone_ppularity.py
+python3 zone_popularity.py
 ```
 This step computes the discretized popularity level of each sub-area. It generates the files:
 
@@ -47,14 +47,46 @@ zone_populariy.csv
 ```
 python3 graph_part.py
 ```
-it constructs the location graphs, it partitions the graph given their popularity and computes the distance between each pair of sub areas. The discretization information used for the graph is provided in the directory called `NYC_Maps` in the root of this repository. 
+This step constructs the location graphs, partitions the graph given their popularity and computes the distance between each pair of sub areas. The discretization information used for the graph is provided in the directory called `NYC_Maps` in the root of this repository.  It generates the files:
 
 taxi_zones_clusters.csv
+
 distances.csv
 
-# Results
+3. Location Features Construction
+
+```
+python3 location_features.py
+```
+
+This step keeps the most popular clusters and locations that will be used as features for the regressor, and it creates the one hot representation for each subarea. It generates the generates the files:
+
+popular_taxi_zones_binary_clusters.csv
+
+one_hot_popular_taxi_zones_lookup.csv
+
+4. Features Construction for the Testing Data
+
+```
+python3 test_features.py
+```
+
+This step computes the features for the testing dataset. It generates the file:
+
+X_test.csv
+
+5. Training and Validation Dataset formation, Model Training.
+
+```
+python3 split_learn_features.py
+```
+
+This file splits the dataset in the validation/ training dataset. It computes the traffic and location features for them. Subsequently, a random  forest regressor is fitted. Finally, it predicts the trip duration for the testing dataset. It prints a log file with the importance of the features, the validation error achieved and the learning time.
+
 
 # Contact
+
+Any questions and requests for access to the data can be directed to iapostol@andrew.cmu.edu
 
 
 
